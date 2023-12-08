@@ -5,7 +5,7 @@ export default (initialValue) => {
     const nod = () => {
         if (listeners.length > 0 && !alerting) {
             alerting = true;
-            window.queueMicrotask(() => {
+            globalThis.queueMicrotask(() => {
                 for (const listener of listeners) {
                     listener(value);
                 }
@@ -26,7 +26,7 @@ export default (initialValue) => {
             nod();
         },
         stop: () => {
-            window.queueMicrotask(() => {
+            globalThis.queueMicrotask(() => {
                 listeners = [];
             });
         }

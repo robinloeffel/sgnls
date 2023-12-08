@@ -4,7 +4,7 @@
 ![npm](https://img.shields.io/npm/dw/sgnls)
 ![dependencies](https://img.shields.io/badge/dependencies-none-blue)
 
-> smol, simple signals
+> smol, simple signals for the browser and node
 
 an easy way to create and use signals in your code base, with a tiny footprint and full type support.
 
@@ -28,9 +28,9 @@ $favPasta.set('carbonara');
 
 ## api
 
-### `init`
+### `import`
 
-`sgnls` comes with a very straightforward api. it exports one default function, which returns a signal object.
+`sgnls` comes with a straightforward api. it exports one default function, which returns a signal object.
 
 ```typescript
 import signal from 'sgnls';

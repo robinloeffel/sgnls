@@ -9,7 +9,7 @@ export default <T>(initialValue: T) => {
     if (listeners.length > 0 && !alerting) {
       alerting = true;
 
-      window.queueMicrotask(() => {
+      globalThis.queueMicrotask(() => {
         for (const listener of listeners) {
           listener(value);
         }
@@ -32,7 +32,7 @@ export default <T>(initialValue: T) => {
       nod();
     },
     stop: () => {
-      window.queueMicrotask(() => {
+      globalThis.queueMicrotask(() => {
         listeners = [];
       });
     }

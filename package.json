@@ -1,0 +1,25 @@
+{
+  "name": "sgnls",
+  "version": "0.0.1",
+  "description": "smol, simple signals",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.55.0",
+    "eslint-config-sweet": "^18.0.0",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "start": "concurrently 'tsc -w' 'browser-sync dist -w'",
+    "prepublishOnly": "rm -rf dist/*.{js,ts} && tsc"
+  }
+}

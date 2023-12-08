@@ -11,17 +11,17 @@ an easy way to create and use signals in your code base, with a tiny footprint a
 
 ## usage
 
-```bash
+```sh
 npm i sgnls
 ```
 
-```typescript
+```ts
 import signal from 'sgnls';
 
 const $favPasta = signal('lasagna');
 
 $favPasta.effect(newValue => {
-	document.title = `my favorite pasta is ${newValue}`;
+  document.title = `my favorite pasta is ${newValue}`;
 });
 
 $favPasta.set('carbonara');
@@ -33,7 +33,7 @@ $favPasta.set('carbonara');
 
 `sgnls` comes with a straightforward api. it exports one default function, which returns a signal object.
 
-```typescript
+```ts
 import signal from 'sgnls';
 
 const $signal = signal('initial value');
@@ -45,7 +45,7 @@ said object then exposes the following four methods.
 
 returns the current value of the signal.
 
-```typescript
+```ts
 const $signal = signal('initial value');
 
 $signal.get();
@@ -55,7 +55,7 @@ $signal.get();
 
 updates the value of the signal.
 
-```typescript
+```ts
 const $signal = signal('initial value');
 
 $signal.set('new value');
@@ -67,11 +67,11 @@ sets up an effect to be called whenever the signal changes.
 
 _note: the effect is called once immediately after the setup!_
 
-```typescript
+```ts
 const $signal = signal('initial value');
 
 $signal.effect(newValue => {
-	console.log(newValue);
+  console.log(newValue);
 });
 
 $signal.set('new value');
@@ -81,7 +81,7 @@ $signal.set('new value');
 
 stops the attached effects from invoking.
 
-```typescript
+```ts
 const $signal = signal('initial value');
 
 $signal.stop();

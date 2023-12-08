@@ -1,12 +1,11 @@
 # `sgnls`
 
-[![version on npm](https://badgen.net/npm/v/sgnls)](https://www.npmjs.com/package/sgnls)
-[![weekly downloads on npm](https://badgen.net/npm/dw/sgnls)](https://www.npmjs.com/package/sgnls)
-[![minified size](https://badgen.net/bundlephobia/min/sgnls)](https://bundlephobia.com/package/sgnls)
-[![dependency count](https://badgen.net/bundlephobia/dependency-count/sgnls)](https://bundlephobia.com/package/sgnls)
-[![license](https://badgen.net/github/license/robinloeffel/sgnls)](https://github.com/robinloeffel/sgnls)
+[![version on npm](https://img.shields.io/npm/v/sgnls)](https://www.npmjs.com/package/sgnls)
+[![weekly downloads on npm](https://img.shields.io/npm/dw/sgnls)](https://www.npmjs.com/package/sgnls)
+[![minified size](https://img.shields.io/bundlephobia/min/sgnls)](https://bundlephobia.com/package/sgnls)
+[![license](https://img.shields.io/github/license/robinloeffel/sgnls)](https://github.com/robinloeffel/sgnls)
 
-> smol, simple signals for the browser and node
+> small, simple signals for the browser and node
 
 an easy way to create and use signals in your code base, with a tiny footprint and full type support.
 
@@ -22,7 +21,7 @@ import signal from 'sgnls';
 const $favPasta = signal('lasagna');
 
 $favPasta.effect(newValue => {
-  document.title = `my favorite pasta is ${newValue}`;
+	document.title = `my favorite pasta is ${newValue}`;
 });
 
 $favPasta.set('carbonara');
@@ -72,7 +71,7 @@ _note: the effect is called once immediately after the setup!_
 const $signal = signal('initial value');
 
 $signal.effect(newValue => {
-  console.log(newValue);
+	console.log(newValue);
 });
 
 $signal.set('new value');

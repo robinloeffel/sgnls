@@ -1,16 +1,16 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "declaration": true,
-    "outDir": "dist"
-  },
-  "include": ["src"]
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"lib": ["esnext", "dom", "dom.iterable"],
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"skipLibCheck": true,
+		"verbatimModuleSyntax": true,
+		"moduleDetection": "force",
+		"declaration": true,
+		"outDir": "dist"
+	},
+	"include": ["src"]
 }

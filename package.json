@@ -1,26 +1,42 @@
 {
-  "name": "sgnls",
-  "version": "0.0.1",
-  "description": "smol, simple signals",
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist"
-  ],
-  "devDependencies": {
-    "browser-sync": "^2.29.3",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.55.0",
-    "eslint-config-sweet": "^18.0.0",
-    "gh-pages": "^6.1.0",
-    "typescript": "^5.3.3"
-  },
-  "scripts": {
-    "start": "concurrently 'tsc -w' 'browser-sync dist -w --no-ui --no-notify'",
-    "prepublishOnly": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist"
-  }
+	"name": "sgnls",
+	"version": "0.0.1",
+	"description": "small, simple signals for the browser and node",
+	"author": "Robin Löffel",
+  "repository": "https://github.com/robinloeffel/sgnls",
+  "homepage": "https://robinloeffel.github.io/sgnls",
+	"license": "MIT",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"keywords": [
+		"typescript",
+		"browser",
+		"node",
+		"state-management",
+		"reactivity",
+		"signals",
+		"effects",
+		"observables",
+		"runes",
+		"refs"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist"
+	],
+	"devDependencies": {
+		"browser-sync": "^2.29.3",
+		"concurrently": "^8.2.2",
+		"eslint": "^8.55.0",
+		"eslint-config-sweet": "^18.0.0",
+		"gh-pages": "^6.1.0",
+		"typescript": "^5.3.3"
+	},
+	"scripts": {
+		"start": "concurrently 'tsc -w' 'browser-sync dist -w --no-ui --no-notify'",
+		"prepublishOnly": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist"
+	}
 }

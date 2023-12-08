@@ -1,40 +1,40 @@
 export default <T>(initialValue: T) => {
-  type Listener = (changedValue: T) => void;
+	type Effect = (newValue: T) => void;
 
-  let value = initialValue;
-  let alerting = false;
-  let listeners: Listener[] = [];
+	let currentValue = initialValue;
+	let invokingEffects = false;
+	let effects: Effect[] = [];
 
-  const nod = () => {
-    if (listeners.length > 0 && !alerting) {
-      alerting = true;
+	const invokeEffects = () => {
+		if (effects.length > 0 && !invokingEffects) {
+			invokingEffects = true;
 
-      globalThis.queueMicrotask(() => {
-        for (const listener of listeners) {
-          listener(value);
-        }
+			globalThis.queueMicrotask(() => {
+				for (const effect of effects) {
+					effect(currentValue);
+				}
 
-        alerting = false;
-      });
-    }
-  };
+				invokingEffects = false;
+			});
+		}
+	};
 
-  return {
-    get: () => value,
-    set: (newValue: T) => {
-      if (newValue !== value) {
-        value = newValue;
-        nod();
-      }
-    },
-    effect: (listener: Listener) => {
-      listeners = [ ...listeners, listener ];
-      nod();
-    },
-    stop: () => {
-      globalThis.queueMicrotask(() => {
-        listeners = [];
-      });
-    }
-  };
+	return {
+		get: () => currentValue,
+		set: (newValue: T) => {
+			if (newValue !== currentValue) {
+				currentValue = newValue;
+				invokeEffects();
+			}
+		},
+		effect: (effectToAdd: Effect) => {
+			effects = [ ...effects, effectToAdd ];
+			invokeEffects();
+		},
+		stop: () => {
+			globalThis.queueMicrotask(() => {
+				effects = [];
+			});
+		}
+	};
 };

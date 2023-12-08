@@ -1,66 +1,66 @@
 <!doctype html>
 
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>@rbnlffl/nod</title>
-    <link rel="icon" href="https://img.pokemondb.net/sprites/items/poke-ball.png">
-    <style>
-      body {
-        font-family: system-ui;
-        font-size: 125%;
-        color: rgb(240 240 240);
-        background-color: rgb(35 35 45);
-        display: grid;
-        place-items: center;
-        place-content: center;
-        height: 100dvh;
-        padding: 0;
-        margin: 0;
-      }
-    </style>
-    <script type="module">
-      import signal from './index.js';
+	<head>
+		<meta charset="utf-8">
+		<title>@rbnlffl/nod</title>
+		<link rel="icon" href="https://img.pokemondb.net/sprites/items/poke-ball.png">
+		<style>
+			body {
+				font-family: system-ui;
+				font-size: 125%;
+				color: rgb(240 240 240);
+				background-color: rgb(35 35 45);
+				display: grid;
+				place-items: center;
+				place-content: center;
+				height: 100dvh;
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+		<script type="module">
+			import signal from './index.js';
 
-      let count = 0;
-      const $pokemon = signal('charmander');
-      const names = [
-        'bulbasaur',
-        'charmander',
-        'squirtle',
-        'chikorita',
-        'cyndaquil',
-        'totodile',
-      ];
+			let count = 0;
+			const $pokemon = signal('charmander');
+			const names = [
+				'bulbasaur',
+				'charmander',
+				'squirtle',
+				'chikorita',
+				'cyndaquil',
+				'totodile',
+			];
 
-      const img = document.createElement('img');
-      const span = document.createElement('span');
-      document.body.append(img);
-      document.body.append(span);
+			const img = document.createElement('img');
+			const span = document.createElement('span');
+			document.body.append(img);
+			document.body.append(span);
 
-      $pokemon.effect((value) => {
-        window.document.title = `${value}`;
-        img.src = `https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${value}.png`;
-        span.textContent = value;
+			$pokemon.effect((value) => {
+				window.document.title = `${value}`;
+				img.src = `https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${value}.png`;
+				span.textContent = value;
 
-        console.log('effect ran; $pokemon is', value);
-      });
+				console.log('effect ran; $pokemon is', value);
+			});
 
-      window.setInterval(() => {
-        if (count === 10) {
-          $pokemon.stop();
-          console.log('stopped listening to $pokemon');
-        }
+			window.setInterval(() => {
+				if (count === 10) {
+					$pokemon.stop();
+					console.log('stopped listening to $pokemon');
+				}
 
-        count += 1;
+				count += 1;
 
-        const newValue = names[Math.floor(Math.random() * names.length)];
-        $pokemon.set(newValue);
+				const newValue = names[Math.floor(Math.random() * names.length)];
+				$pokemon.set(newValue);
 
-        console.log('interval ran; $pokemon set to', newValue);
-      }, 1500);
-    </script>
-  </head>
-  <body>
-  </body>
+				console.log('interval ran; $pokemon set to', newValue);
+			}, 1500);
+		</script>
+	</head>
+	<body>
+	</body>
 </html>

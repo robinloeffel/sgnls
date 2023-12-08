@@ -21,6 +21,12 @@ export default (initialValue) => {
                 invokeEffects();
             }
         },
+        update: (updater) => {
+            if (updater(currentValue) !== currentValue) {
+                currentValue = updater(currentValue);
+                invokeEffects();
+            }
+        },
         effect: (effectToAdd) => {
             effects = [...effects, effectToAdd];
             invokeEffects();

@@ -1,66 +1,72 @@
 <!doctype html>
 
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>@rbnlffl/nod</title>
-    <link rel="icon" href="https://img.pokemondb.net/sprites/items/poke-ball.png">
-    <style>
-      body {
-        font-family: system-ui;
-        font-size: 125%;
-        color: rgb(240 240 240);
-        background-color: rgb(35 35 45);
-        display: grid;
-        place-items: center;
-        place-content: center;
-        height: 100dvh;
-        padding: 0;
-        margin: 0;
-      }
-    </style>
-    <script type="module">
-      import signal from './index.js';
+	<head>
+		<meta charset="utf-8">
+		<title>sgnls</title>
+		<link rel="icon" href="https://img.pokemondb.net/sprites/items/poke-ball.png">
+		<style>
+			body {
+				font-family: system-ui;
+				font-size: 125%;
+				color: rgb(240 240 240);
+				background-color: rgb(35 35 45);
+				display: grid;
+				place-items: center;
+				place-content: center;
+				gap: 1em;
+				height: 100dvh;
+				padding: 0;
+				margin: 0;
+			}
 
-      let count = 0;
-      const $pokemon = signal('charmander');
-      const names = [
-        'bulbasaur',
-        'charmander',
-        'squirtle',
-        'chikorita',
-        'cyndaquil',
-        'totodile',
-      ];
+			img {
+				width: 50%;
+				height: auto;
+			}
+		</style>
+		<script type="module">
+			import signal from './index.js';
 
-      const img = document.createElement('img');
-      const span = document.createElement('span');
-      document.body.append(img);
-      document.body.append(span);
+			let count = 0;
+			const $pokemon = signal('charmander');
+			const names = [
+				'bulbasaur',
+				'charmander',
+				'squirtle',
+				'chikorita',
+				'cyndaquil',
+				'totodile',
+			];
 
-      $pokemon.effect((value) => {
-        window.document.title = `${value}`;
-        img.src = `https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${value}.png`;
-        span.textContent = value;
+			const img = document.createElement('img');
+			const span = document.createElement('span');
+			document.body.append(img);
+			document.body.append(span);
 
-        console.log('effect ran; $pokemon is', value);
-      });
+			$pokemon.effect((value) => {
+				window.document.title = `${value}`;
+				img.src = `https://img.pokemondb.net/sprites/home/normal/${value}.png`;
+				span.textContent = value;
 
-      window.setInterval(() => {
-        if (count === 10) {
-          $pokemon.stop();
-          console.log('stopped listening to $pokemon');
-        }
+				console.log('effect ran; $pokemon is', value);
+			});
 
-        count += 1;
+			window.setInterval(() => {
+				if (count === 10) {
+					$pokemon.stop();
+					console.log('stopped listening to $pokemon');
+				}
 
-        const newValue = names[Math.floor(Math.random() * names.length)];
-        $pokemon.set(newValue);
+				count += 1;
 
-        console.log('interval ran; $pokemon set to', newValue);
-      }, 1500);
-    </script>
-  </head>
-  <body>
-  </body>
+				const newValue = names[Math.floor(Math.random() * names.length)];
+				$pokemon.set(newValue);
+
+				console.log('interval ran; $pokemon set to', newValue);
+			}, 1500);
+		</script>
+	</head>
+	<body>
+	</body>
 </html>

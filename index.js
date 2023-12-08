@@ -1,33 +1,33 @@
 export default (initialValue) => {
-    let value = initialValue;
-    let alerting = false;
-    let listeners = [];
-    const nod = () => {
-        if (listeners.length > 0 && !alerting) {
-            alerting = true;
+    let currentValue = initialValue;
+    let invokingEffects = false;
+    let effects = [];
+    const invokeEffects = () => {
+        if (effects.length > 0 && !invokingEffects) {
+            invokingEffects = true;
             globalThis.queueMicrotask(() => {
-                for (const listener of listeners) {
-                    listener(value);
+                for (const effect of effects) {
+                    effect(currentValue);
                 }
-                alerting = false;
+                invokingEffects = false;
             });
         }
     };
     return {
-        get: () => value,
+        get: () => currentValue,
         set: (newValue) => {
-            if (newValue !== value) {
-                value = newValue;
-                nod();
+            if (newValue !== currentValue) {
+                currentValue = newValue;
+                invokeEffects();
             }
         },
-        effect: (listener) => {
-            listeners = [...listeners, listener];
-            nod();
+        effect: (effectToAdd) => {
+            effects = [...effects, effectToAdd];
+            invokeEffects();
         },
         stop: () => {
             globalThis.queueMicrotask(() => {
-                listeners = [];
+                effects = [];
             });
         }
     };

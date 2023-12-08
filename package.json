@@ -16,10 +16,11 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.55.0",
     "eslint-config-sweet": "^18.0.0",
+    "gh-pages": "^6.1.0",
     "typescript": "^5.3.3"
   },
   "scripts": {
-    "start": "concurrently 'tsc -w' 'browser-sync dist -w'",
-    "prepublishOnly": "rm -rf dist/*.{js,ts} && tsc"
+    "start": "concurrently 'tsc -w' 'browser-sync dist -w --no-ui --no-notify'",
+    "prepublishOnly": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist"
   }
 }

@@ -1,8 +1,10 @@
 # `sgnls`
 
-![npm](https://img.shields.io/npm/v/sgnls)
-![npm](https://img.shields.io/npm/dw/sgnls)
-![dependencies](https://img.shields.io/badge/dependencies-none-blue)
+[![version on npm](https://badgen.net/npm/v/sgnls)](https://www.npmjs.com/package/sgnls)
+[![weekly downloads on npm](https://badgen.net/npm/dw/sgnls)](https://www.npmjs.com/package/sgnls)
+[![minified size](https://badgen.net/bundlephobia/min/sgnls)](https://bundlephobia.com/package/sgnls)
+[![dependency count](https://badgen.net/bundlephobia/dependency-count/sgnls)](https://bundlephobia.com/package/sgnls)
+[![license](https://badgen.net/github/license/robinloeffel/sgnls)](https://github.com/robinloeffel/sgnls)
 
 > smol, simple signals for the browser and node
 

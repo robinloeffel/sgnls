@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>@rbnlffl/nod</title>
+		<title>sgnls</title>
 		<link rel="icon" href="https://img.pokemondb.net/sprites/items/poke-ball.png">
 		<style>
 			body {
@@ -14,9 +14,15 @@
 				display: grid;
 				place-items: center;
 				place-content: center;
+				gap: 1em;
 				height: 100dvh;
 				padding: 0;
 				margin: 0;
+			}
+
+			img {
+				width: 50%;
+				height: auto;
 			}
 		</style>
 		<script type="module">
@@ -40,7 +46,7 @@
 
 			$pokemon.effect((value) => {
 				window.document.title = `${value}`;
-				img.src = `https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${value}.png`;
+				img.src = `https://img.pokemondb.net/sprites/home/normal/${value}.png`;
 				span.textContent = value;
 
 				console.log('effect ran; $pokemon is', value);

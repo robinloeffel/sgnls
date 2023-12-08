@@ -34,6 +34,8 @@
 	},
 	"scripts": {
 		"start": "concurrently 'tsc -w' 'browser-sync dist -w --no-ui --no-notify'",
+		"test": "node --test --watch",
+		"pretest": "rm -rf dist/*.{js,ts} && tsc",
 		"prepublishOnly": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist"
 	}
 }

@@ -1,5 +1,6 @@
 export default <T>(initialValue: T) => {
 	type Effect = (newValue: T) => void;
+	type Updater = (oldValue: T) => T;
 
 	let currentValue = initialValue;
 	let invokingEffects = false;
@@ -24,6 +25,12 @@ export default <T>(initialValue: T) => {
 		set: (newValue: T) => {
 			if (newValue !== currentValue) {
 				currentValue = newValue;
+				invokeEffects();
+			}
+		},
+		update: (updater: Updater) => {
+			if (updater(currentValue) !== currentValue) {
+				currentValue = updater(currentValue);
 				invokeEffects();
 			}
 		},

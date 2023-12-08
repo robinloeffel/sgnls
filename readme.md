@@ -39,7 +39,7 @@ import signal from 'sgnls';
 const $signal = signal('initial value');
 ```
 
-said object then exposes the following four methods.
+said object then exposes the following five methods.
 
 ### `get`
 
@@ -53,12 +53,22 @@ $signal.get();
 
 ### `set`
 
-updates the value of the signal.
+sets the value of the signal.
 
 ```ts
 const $signal = signal('initial value');
 
 $signal.set('new value');
+```
+
+### `update`
+
+updates the value of the signal by mutating it through a function.
+
+```ts
+const $signal = signal(['a', 'b', 'c']);
+
+$signal.update(value => [...value, 'd']);
 ```
 
 ### `effect`

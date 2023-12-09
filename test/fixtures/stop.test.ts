@@ -1,10 +1,8 @@
-import { describe, it } from "node:test";
-import { strictEqual } from "node:assert";
+import { suite, test, expect } from "vitest";
+import signal from "../../dist";
 
-import signal from "../dist/index.js";
-
-describe("stop invoking effects when a signal changes", () => {
-	it("stops invoking an effect", () => {
+suite("stop invoking effects when a signal changes", () => {
+	test("stops invoking an effect", () => {
 		const $signal = signal("test");
 		let count = 0;
 
@@ -22,11 +20,11 @@ describe("stop invoking effects when a signal changes", () => {
 		}, 1000);
 
 		globalThis.setTimeout(() => {
-			strictEqual(count, 2);
+			expect(count).toStrictEqual(2);
 		}, 1500);
 	});
 
-	it("stops invoking multiple effect", () => {
+	test("stops invoking multiple effects", () => {
 		const $signal = signal("test");
 		let count = 0;
 
@@ -48,7 +46,7 @@ describe("stop invoking effects when a signal changes", () => {
 		}, 1000);
 
 		globalThis.setTimeout(() => {
-			strictEqual(count, 4);
+			expect(count).toStrictEqual(4);
 		}, 1500);
 	});
 });

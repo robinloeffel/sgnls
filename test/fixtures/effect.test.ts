@@ -1,10 +1,8 @@
-import { describe, it } from "node:test";
-import { strictEqual, deepStrictEqual } from "node:assert";
+import { suite, test, expect } from "vitest";
+import signal from "../../dist";
 
-import signal from "../dist/index.js";
-
-describe("invoke effects when a signal changes", () => {
-	it("invokes an effect", () => {
+suite("invoke effects when a signal changes", () => {
+	test("invokes an effect", () => {
 		const $signal = signal("test");
 		let count = 0;
 
@@ -17,13 +15,13 @@ describe("invoke effects when a signal changes", () => {
 		}, 500);
 
 		globalThis.setTimeout(() => {
-			strictEqual(count, 2);
+			expect(count).toStrictEqual(2);
 		}, 1000);
 	});
 
-	it("invokes multiple effects and in order", () => {
+	test("invokes multiple effects and in order", () => {
 		const $signal = signal("test");
-		let order = [];
+		let order: number[] = [];
 
 		$signal.effect(() => {
 			order = [ ...order, 1 ];
@@ -42,11 +40,11 @@ describe("invoke effects when a signal changes", () => {
 		}, 500);
 
 		globalThis.setTimeout(() => {
-			deepStrictEqual(order, [ 1, 2, 3, 1, 2, 3 ]);
+			expect(order).toStrictEqual([ 1, 2, 3, 1, 2, 3 ]);
 		}, 1000);
 	});
 
-	it("doesn't invoke an effect if the signal's value stays the same", () => {
+	test("doesn't invoke an effect if the signal's value stays the same", () => {
 		const $signal = signal("test");
 		let count = 0;
 
@@ -59,11 +57,11 @@ describe("invoke effects when a signal changes", () => {
 		}, 500);
 
 		globalThis.setTimeout(() => {
-			strictEqual(count, 1);
+			expect(count).toStrictEqual(1);
 		}, 1000);
 	});
 
-	it("batches effect executions", () => {
+	test("batches effect executions", () => {
 		const $signal = signal("test");
 		let count = 0;
 
@@ -78,15 +76,15 @@ describe("invoke effects when a signal changes", () => {
 		$signal.set("test5");
 
 		globalThis.setTimeout(() => {
-			strictEqual(count, 1);
+			expect(count).toStrictEqual(1);
 		}, 1000);
 	});
 
-	it("exposes the signal's value to the effect", () => {
+	test("exposes the signal's value to the effect", () => {
 		const $signal = signal("test");
 
 		$signal.effect(value => {
-			strictEqual(value, "test");
+			expect(value).toStrictEqual("test");
 		});
 	});
 });

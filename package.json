@@ -25,17 +25,25 @@
 		"dist"
 	],
 	"devDependencies": {
+		"@commitlint/cli": "^18.4.3",
+		"@commitlint/config-conventional": "^18.4.3",
+		"@commitlint/types": "^18.4.3",
 		"browser-sync": "^2.29.3",
 		"concurrently": "^8.2.2",
 		"eslint": "^8.55.0",
 		"eslint-config-sweet": "^18.0.0",
 		"gh-pages": "^6.1.0",
-		"typescript": "^5.3.3"
+		"husky": "^8.0.3",
+		"lint-staged": "^15.2.0",
+		"typescript": "^5.3.3",
+		"vitest": "^1.0.2"
 	},
 	"scripts": {
-		"start": "concurrently 'tsc -w' 'browser-sync dist -w --no-ui --no-notify'",
-		"test": "node --test --watch",
-		"pretest": "rm -rf dist/*.{js,ts} && tsc",
-		"prepublishOnly": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist"
+		"start": "concurrently 'npm:watch:*'",
+		"watch:build": "tsc -w",
+		"watch:browser": "browser-sync dist -w",
+		"watch:tests": "vitest",
+		"postpublish": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist",
+		"postinstall": "husky install"
 	}
 }

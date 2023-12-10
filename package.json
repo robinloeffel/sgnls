@@ -4,11 +4,14 @@
 	"description": "small, simple signals for the browser and node",
 	"author": "Robin Löffel",
 	"repository": "https://github.com/robinloeffel/sgnls",
-	"homepage": "https://robinloeffel.github.io/sgnls",
+	"homepage": "https://github.com/robinloeffel/sgnls",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"engines": {
+		"node": ">=12"
+	},
 	"keywords": [
 		"typescript",
 		"browser",

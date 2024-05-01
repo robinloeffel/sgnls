@@ -3,8 +3,6 @@
 [![version on npm](https://badgen.net/npm/v/sgnls)](https://www.npmjs.com/package/sgnls)
 [![weekly downloads on npm](https://badgen.net/npm/dw/sgnls)](https://www.npmjs.com/package/sgnls)
 [![types](https://badgen.net/npm/types/sgnls)](https://www.npmjs.com/package/sgnls)
-[![minified size](https://badgen.net/bundlephobia/minzip/sgnls)](https://bundlephobia.com/package/sgnls)
-[![node version](https://badgen.net/npm/node/sgnls)](https://github.com/nodejs/Release)
 [![license](https://badgen.net/npm/license/sgnls)](https://github.com/robinloeffel/sgnls/blob/main/license.txt)
 
 > small, simple signals for the browser and node

@@ -1,10 +1,10 @@
-export default <T>(initialValue: T) => {
-	type Effect = (newValue: T) => void;
-	type Updater = (oldValue: T) => T;
+type Effect<T> = (newValue: T) => void;
+type Updater<T> = (oldValue: T) => T;
 
+const signal = <T>(initialValue: T) => {
 	let currentValue = initialValue;
 	let invokingEffects = false;
-	let effects: Effect[] = [];
+	let effects: Effect<T>[] = [];
 
 	const invokeEffects = () => {
 		if (effects.length > 0 && !invokingEffects) {
@@ -28,13 +28,13 @@ export default <T>(initialValue: T) => {
 				invokeEffects();
 			}
 		},
-		update: (updater: Updater) => {
+		update: (updater: Updater<T>) => {
 			if (updater(currentValue) !== currentValue) {
 				currentValue = updater(currentValue);
 				invokeEffects();
 			}
 		},
-		effect: (effectToAdd: Effect) => {
+		effect: (effectToAdd: Effect<T>) => {
 			effects = [ ...effects, effectToAdd ];
 			invokeEffects();
 		},
@@ -45,3 +45,5 @@ export default <T>(initialValue: T) => {
 		}
 	};
 };
+
+export default signal;

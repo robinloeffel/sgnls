@@ -1,16 +1,13 @@
 {
+	"extends": "@tsconfig/strictest",
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "esnext",
-		"moduleResolution": "bundler",
-		"lib": ["esnext", "dom", "dom.iterable"],
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"skipLibCheck": true,
-		"verbatimModuleSyntax": true,
+		"module": "preserve",
 		"moduleDetection": "force",
 		"declaration": true,
 		"outDir": "dist"
 	},
-	"include": ["src"]
+	"include": [
+		"src"
+	]
 }

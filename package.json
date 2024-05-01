@@ -2,16 +2,6 @@
 	"name": "sgnls",
 	"version": "0.0.2",
 	"description": "small, simple signals for the browser and node",
-	"author": "Robin Löffel",
-	"repository": "https://github.com/robinloeffel/sgnls",
-	"homepage": "https://github.com/robinloeffel/sgnls",
-	"license": "MIT",
-	"type": "module",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"engines": {
-		"node": ">=12"
-	},
 	"keywords": [
 		"typescript",
 		"browser",
@@ -24,29 +14,29 @@
 		"runes",
 		"refs"
 	],
+	"homepage": "https://github.com/robinloeffel/sgnls",
+	"repository": "https://github.com/robinloeffel/sgnls",
+	"license": "MIT",
+	"author": "Robin Löffel",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"files": [
 		"dist"
 	],
-	"devDependencies": {
-		"@commitlint/cli": "^18.4.3",
-		"@commitlint/config-conventional": "^18.4.3",
-		"@commitlint/types": "^18.4.3",
-		"browser-sync": "^2.29.3",
-		"concurrently": "^8.2.2",
-		"eslint": "^8.55.0",
-		"eslint-config-sweet": "^18.0.0",
-		"gh-pages": "^6.1.0",
-		"husky": "^8.0.3",
-		"lint-staged": "^15.2.0",
-		"typescript": "^5.3.3",
-		"vitest": "^1.0.2"
-	},
 	"scripts": {
-		"start": "concurrently 'npm:watch:*'",
+		"prepack": "rm -rf dist && tsc",
+		"start": "concurrently npm:watch:*",
 		"watch:build": "tsc -w",
-		"watch:browser": "browser-sync dist -w",
-		"watch:tests": "vitest",
-		"postpublish": "rm -rf dist/*.{js,ts} && tsc && gh-pages -d dist",
-		"postinstall": "husky install"
+		"watch:tests": "vitest"
+	},
+	"devDependencies": {
+		"@tsconfig/strictest": "^2.0.5",
+		"concurrently": "^8.2.2",
+		"eslint": "^8.57.0",
+		"eslint-config-sweet": "^20.0.0",
+		"eslint-define-config": "^2.1.0",
+		"typescript": "^5.4.5",
+		"vitest": "^1.5.3"
 	}
 }

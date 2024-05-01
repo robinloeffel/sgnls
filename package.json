@@ -1,6 +1,6 @@
 {
 	"name": "sgnls",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "small, simple signals for the browser and node",
 	"keywords": [
 		"typescript",

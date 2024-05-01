@@ -1,5 +1,5 @@
 /** function that gets executed when a signal changes */
-type Effect = VoidFunction;
+type Effect<T> = (value: T) => void;
 
 /** function that manipulates the value of a signal */
 type Updater<T> = (oldValue: T) => T;
@@ -16,7 +16,7 @@ interface Signal<T> {
 	update: (updater: Updater<T>) => void;
 
 	/** add an effect to the signal */
-	effect: (effectToAdd: Effect) => void;
+	effect: (effectToAdd: Effect<T>) => void;
 
 	/** remove all effects from the signal */
 	stop: VoidFunction;
@@ -30,7 +30,7 @@ const tick = (callback: VoidFunction) => {
 const signal = <SignalType>(initialValue: SignalType): Signal<SignalType> => {
 	let currentValue = initialValue;
 	let invokingEffects = false;
-	let effects: Effect[] = [];
+	let effects: Effect<SignalType>[] = [];
 
 	const invokeEffects = () => {
 		if (effects.length > 0 && !invokingEffects) {
@@ -38,7 +38,7 @@ const signal = <SignalType>(initialValue: SignalType): Signal<SignalType> => {
 
 			tick(() => {
 				for (const effect of effects) {
-					effect();
+					effect(currentValue);
 				}
 
 				invokingEffects = false;
@@ -60,7 +60,7 @@ const signal = <SignalType>(initialValue: SignalType): Signal<SignalType> => {
 				invokeEffects();
 			}
 		},
-		effect: (effectToAdd: Effect) => {
+		effect: (effectToAdd: Effect<SignalType>) => {
 			effects.push(effectToAdd);
 		},
 		stop: () => {

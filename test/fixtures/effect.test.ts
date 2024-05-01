@@ -1,4 +1,4 @@
-import { suite, test, expect } from "vitest";
+import { expect, suite, test } from "vitest";
 import signal from "../../dist";
 
 suite("invoke effects when a signal changes", () => {
